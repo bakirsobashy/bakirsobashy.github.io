@@ -586,6 +586,43 @@ footer .wrap {
       </div>
 
       <div class="sheets">
+        <article class="sheet" id="kursi">
+          <div class="sheet-text">
+            <div class="meta"><span class="status live">Open source</span><span class="kind">242 tests, CI on every PR</span></div>
+            <div class="sheet-title">
+              <h3>Kursi</h3>
+              <p>Event booking REST API</p>
+            </div>
+            <p>A REST API for booking seats at events that never sells more seats than an event has, even when 50 people try to book its 10 seats at the same moment. Each booking is one conditional SQL UPDATE, so PostgreSQL's row lock makes every request re-check the latest seat count.</p>
+            <ul class="feats">
+              <li>A concurrency test sends 50 bookings at a 10-seat event at once and gets exactly 10, on every one of 20 runs</li>
+              <li>Rotating refresh tokens with reuse detection, in an HttpOnly cookie</li>
+              <li>Rules enforced by PostgreSQL constraints, OpenAPI 3.1 docs generated from the Zod schemas</li>
+              <li>242 tests against a real PostgreSQL, CI on GitHub Actions, Docker image for amd64 and arm64</li>
+            </ul>
+            <ul class="stack" aria-label="Built with">
+              <li>Node.js</li><li>TypeScript</li><li>Express 5</li><li>PostgreSQL</li><li>Drizzle ORM</li><li>Zod</li><li>Vitest</li><li>Docker</li>
+            </ul>
+            <div class="links">
+              <a class="btn btn-primary" href="https://github.com/bakirsobashy/kursi" target="_blank" rel="noopener">View Kursi on GitHub</a>
+            </div>
+          </div>
+          <figure class="dwg" aria-label="Drawing of Kursi: 50 clients book at once; requests pass middleware and Zod validation in an Express API, then a conditional UPDATE in PostgreSQL lets exactly 10 through">
+            <div class="node"><b>50 clients</b><span>All booking a 10-seat event at once</span></div>
+            <div class="wire" data-label="HTTPS" aria-hidden="true"></div>
+            <div class="zone">
+              <span class="zone-label">Docker Compose</span>
+              <div class="node hot">
+                <b>Express API</b><span>Rate limits, JWT auth, Zod validation</span>
+                <ul class="mods" aria-label="Modules"><li>auth</li><li>events</li><li>bookings</li><li>users</li></ul>
+              </div>
+              <div class="wire" data-label="one conditional UPDATE" aria-hidden="true"></div>
+              <div class="node hot"><b>PostgreSQL 18</b><span>Row locks, CHECK constraints, unique indexes</span></div>
+            </div>
+            <figcaption>10 bookings succeed, 40 get "sold out", and the seat counter always matches the bookings.</figcaption>
+          </figure>
+        </article>
+
         <article class="sheet" id="budgi">
           <div class="sheet-text">
             <div class="meta"><span class="status live">Live on Google Play</span></div>
@@ -710,10 +747,11 @@ footer .wrap {
         <h2 id="skills-h">Skills</h2>
       </div>
       <dl class="skills">
-        <div><dt>Backend</dt><dd>Node.js, Express.js, REST APIs, JWT authentication, role-based access control, Nginx</dd></div>
+        <div><dt>Backend</dt><dd>Node.js, Express.js, REST APIs, OpenAPI/Swagger, Zod, JWT authentication, role-based access control, Nginx</dd></div>
         <div><dt>Databases</dt><dd>PostgreSQL, MongoDB, MySQL, SQLite, Redis, Drizzle ORM</dd></div>
         <div><dt>Frontend</dt><dd>React, Next.js, Tailwind CSS</dd></div>
-        <div><dt>Cloud and DevOps</dt><dd>AWS EC2, Docker, Nginx, PM2, SSL termination, Git, Jira, Trello</dd></div>
+        <div><dt>Testing</dt><dd>Vitest, Supertest, Testcontainers, integration tests against real databases</dd></div>
+        <div><dt>Cloud and DevOps</dt><dd>AWS EC2, Docker, GitHub Actions CI, Nginx, PM2, SSL termination, Git, Jira, Trello</dd></div>
         <div><dt>Mobile</dt><dd>React Native, Expo, Jetpack Compose</dd></div>
         <div><dt>Languages</dt><dd>JavaScript, TypeScript, Python, SQL, C#, GDScript</dd></div>
         <div><dt>Game development</dt><dd>Godot Engine, GDScript</dd></div>
