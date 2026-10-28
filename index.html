@@ -586,6 +586,44 @@ footer .wrap {
       </div>
 
       <div class="sheets">
+        <article class="sheet" id="kursi">
+          <div class="sheet-text">
+            <div class="meta"><span class="kind">Open source</span><span class="kind">One-command Docker demo</span></div>
+            <div class="sheet-title">
+              <h3>Kursi</h3>
+              <p>Event booking REST API</p>
+            </div>
+            <p>A REST API for booking seats at events that never sells more seats than an event has. Its concurrency test sends 50 booking requests at once for a 10-seat event: my first version booked all 50, and the final one sells exactly 10 and turns 40 away, on every run.</p>
+            <ul class="feats">
+              <li>Race-free booking with one conditional UPDATE, proven by the 50-request test</li>
+              <li>Rotating refresh tokens in HttpOnly cookies, with reuse detection</li>
+              <li>OpenAPI 3.1 docs generated from the Zod validation schemas and checked by every test</li>
+              <li>Tests against a real PostgreSQL, and four required CI checks on every pull request</li>
+            </ul>
+            <ul class="stack" aria-label="Built with">
+              <li>Node.js</li><li>TypeScript</li><li>Express 5</li><li>PostgreSQL</li><li>Drizzle ORM</li><li>Docker</li><li>GitHub Actions</li>
+            </ul>
+            <div class="links">
+              <a class="btn btn-primary" href="https://github.com/bakirsobashy/kursi" target="_blank" rel="noopener">Code on GitHub</a>
+              <a class="btn" href="https://github.com/bakirsobashy/kursi/blob/main/docs/decisions.md" target="_blank" rel="noopener">Read the decision log</a>
+            </div>
+          </div>
+          <figure class="dwg" aria-label="Drawing of Kursi: 50 clients book the same 10 seats at once through an Express API, which takes each seat with one conditional UPDATE in PostgreSQL, all run with Docker Compose">
+            <div class="node"><b>50 clients</b><span>Booking the same 10 seats at once</span></div>
+            <div class="wire" data-label="REST + JWT" aria-hidden="true"></div>
+            <div class="zone">
+              <span class="zone-label">Docker Compose</span>
+              <div class="node hot">
+                <b>Express 5 API</b><span>Zod validation, rate limits, Problem Details errors</span>
+                <ul class="mods" aria-label="Modules"><li>auth</li><li>events</li><li>bookings</li><li>users</li></ul>
+              </div>
+              <div class="wire" data-label="1 conditional UPDATE" aria-hidden="true"></div>
+              <div class="node hot"><b>PostgreSQL 18</b><span>Row lock per event; a CHECK keeps seats within capacity</span></div>
+            </div>
+            <figcaption>The row lock makes requests for one event wait their turn, and each re-checks the free seats: 10 booked, 40 turned away.</figcaption>
+          </figure>
+        </article>
+
         <article class="sheet" id="budgi">
           <div class="sheet-text">
             <div class="meta"><span class="status live">Live on Google Play</span></div>
