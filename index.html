@@ -656,6 +656,45 @@ footer .wrap {
           </figure>
         </article>
 
+        <article class="sheet" id="swap-war">
+          <div class="sheet-text">
+            <div class="meta"><span class="status live">Play in the browser</span><span class="kind">Open source, CI on every PR</span></div>
+            <div class="sheet-title">
+              <h3>Swap-War</h3>
+              <p>2D physics brawler with AI fighters</p>
+            </div>
+            <p>A game where the teams re-shuffle every 10 seconds, so the fighter beside you can turn on you. You play against up to three AI fighters that find their way around the arena, pick up weapons, jump over spikes and retreat when hurt. It started as a game jam entry and grew into a full game for the web and Android.</p>
+            <ul class="feats">
+              <li>The AI turns each arena's tiles into a graph of platforms and jumps, then plans routes with A*; no hand-placed waypoints</li>
+              <li>A six-state machine decides what each bot wants; a route executor carries it out and recovers when a bot gets stuck</li>
+              <li>14 headless test scripts play real matches on every push; the web build deploys to GitHub Pages automatically</li>
+            </ul>
+            <ul class="stack" aria-label="Built with">
+              <li>Godot 4.7</li><li>GDScript</li><li>A* pathfinding</li><li>GitHub Actions</li><li>HTML5 / WebAssembly</li>
+            </ul>
+            <div class="links">
+              <a class="btn btn-primary" href="https://bakirsobashy.github.io/swap-war/" target="_blank" rel="noopener">Play Swap-War</a>
+              <a class="btn" href="https://github.com/bakirsobashy/swap-war" target="_blank" rel="noopener">Source on GitHub</a>
+            </div>
+          </div>
+          <figure class="dwg" aria-label="Drawing of the Swap-War AI: sensors feed a state machine, which hands goals to a route executor that plans with A* over a graph baked from the arena's tiles; both drive the fighter through the same inputs a player uses">
+            <div class="node"><b>Arena tiles</b><span>Baked once into platforms and jump, drop and walk edges</span></div>
+            <div class="wire" data-label="navigation graph" aria-hidden="true"></div>
+            <div class="zone">
+              <span class="zone-label">Each bot, every physics tick</span>
+              <div class="node"><b>Sensors</b><span>Enemies, weapons, spikes, where am I</span></div>
+              <div class="wire" aria-hidden="true"></div>
+              <div class="node hot">
+                <b>State machine</b><span>Picks a goal</span>
+                <ul class="mods" aria-label="States"><li>patrol</li><li>seek weapon</li><li>approach</li><li>attack</li><li>retreat</li></ul>
+              </div>
+              <div class="wire" data-label="A* route" aria-hidden="true"></div>
+              <div class="node hot"><b>Route executor</b><span>Walks, jumps and drops edge by edge</span></div>
+            </div>
+            <figcaption>Bots press the same virtual buttons as the player, so they share one movement and combat system.</figcaption>
+          </figure>
+        </article>
+
         <article class="sheet" id="inventory-control">
           <div class="sheet-text">
             <div class="meta"><span class="status off">Demo offline</span><span class="kind">Freelance client project</span></div>
