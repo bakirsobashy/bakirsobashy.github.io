@@ -726,40 +726,6 @@ footer .wrap {
             <figcaption>Each request is checked against the user's role before it reaches the data.</figcaption>
           </figure>
         </article>
-
-        <article class="sheet" id="g3-store">
-          <div class="sheet-text">
-            <div class="meta"><span class="status off">Demo offline</span></div>
-            <div class="sheet-title">
-              <h3>G3 Store</h3>
-              <p>E-commerce website</p>
-            </div>
-            <p>A full-stack online store built around modular REST endpoints, designed for scalability and security.</p>
-            <ul class="feats">
-              <li>Registration and login secured with JWT</li>
-              <li>Product management</li>
-              <li>Shopping cart and order processing</li>
-            </ul>
-            <ul class="stack" aria-label="Built with">
-              <li>Node.js</li><li>Express.js</li><li>MongoDB</li><li>JWT</li><li>WhatsApp API</li>
-            </ul>
-          </div>
-          <figure class="dwg" aria-label="Drawing of G3 Store: the storefront calls an Express REST API split into auth, products, cart and orders modules, which uses MongoDB and the WhatsApp API">
-            <div class="node"><b>Storefront</b><span>Customers browse, add to cart and order</span></div>
-            <div class="wire" data-label="REST + JWT" aria-hidden="true"></div>
-            <div class="node hot">
-              <b>Express API</b><span>One module per area of the store</span>
-              <ul class="mods" aria-label="Modules"><li>auth</li><li>products</li><li>cart</li><li>orders</li></ul>
-            </div>
-            <div class="wire" aria-hidden="true" style="height:16px; margin-bottom:0"></div>
-            <div class="split" aria-hidden="true"></div>
-            <div class="node-row">
-              <div class="node hot"><b>MongoDB</b><span>Users, products, carts, orders</span></div>
-              <div class="node"><b>WhatsApp API</b><span>External service</span></div>
-            </div>
-            <figcaption>Keeping each area in its own module makes the API easy to extend.</figcaption>
-          </figure>
-        </article>
       </div>
 
       <div class="more">
